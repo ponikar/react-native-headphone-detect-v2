@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-headphone-detect-v2';
+import * as HeadPhone from 'react-native-headphone-detect-v2';
 
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
+  const [result] = useState<number | undefined>();
 
   useEffect(() => {
-    multiply(3, 7).then(setResult);
+    (async () => {
+      const response = await HeadPhone.isAudioDeviceConnected();
+      console.log('RESPONSE', response);
+
+      HeadPhone.addListener((...args) => {
+        console.log(args, 'listening for event');
+      });
+    })();
   }, []);
 
   return (

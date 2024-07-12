@@ -1,4 +1,4 @@
-import { NativeModules, Platform } from 'react-native';
+import { NativeModules, Platform, NativeEventEmitter } from 'react-native';
 
 const LINKING_ERROR =
   `The package 'react-native-headphone-detect-v2' doesn't seem to be linked. Make sure: \n\n` +
@@ -17,6 +17,18 @@ const HeadphoneDetectV2 = NativeModules.HeadphoneDetectV2
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return HeadphoneDetectV2.multiply(a, b);
+const eventEmitter = new NativeEventEmitter(HeadphoneDetectV2);
+
+export function isAudioDeviceConnected(): Promise<{
+  audioJack: boolean;
+  bluetooth: boolean;
+}> {
+  return HeadphoneDetectV2.isAudioDeviceConnected();
+}
+
+export function addListener(callback: () => void): () => void {
+  return eventEmitter.addListener(
+    HeadphoneDetectV2.AUDIO_DEVICE_CHANGED_NOTIFICATION,
+    callback
+  ) as any;
 }
