@@ -1,6 +1,6 @@
 {
   "name": "react-native-headphone-detect-v2",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "a version that works ",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
