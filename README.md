@@ -47,7 +47,7 @@ import { onAudioDeviceChanged } from 'react-native-headphone-detection-v2';
 import { useEffect } from 'react';
 
 useEffect(() => {
-  const { remove } = onAudioDeviceChanged(() =>
+  const { remove } = onAudioDeviceChanged(({ audioJack, bluetooth }) =>
     console.log('AUDIO DEVICE CHANGED')
   );
   return () => {
