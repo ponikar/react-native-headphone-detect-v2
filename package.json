@@ -43,7 +43,9 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "audio",
+    "headphone"
   ],
   "repository": {
     "type": "git",
