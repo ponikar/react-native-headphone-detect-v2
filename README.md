@@ -39,14 +39,21 @@ import { isAudioDeviceConnected } from 'react-native-headphone-detection-v2';
 const { audioJack, bluetooth } = await isAudioDeviceConnected();
 ```
 
-- `addListener` detects whether the external audio output device has been changed or not.
-<!-- This function returns a callback to remove that listener. Usually, you have to call it inside the cleanup function of `useEffect` -->
+- `onAudioDeviceChanged` detects whether the external audio output device has been changed or not.
+  This function returns a callback to remove that listener. Usually, you have to call it inside the cleanup function of `useEffect`
 
 ```javascript
-import { addListener } from 'react-native-headphone-detection-v2';
+import { onAudioDeviceChanged } from 'react-native-headphone-detection-v2';
 import { useEffect } from 'react';
 
-addListener(() => console.log('AUDIO DEVICE CHANGED'));
+useEffect(() => {
+  const { remove } = onAudioDeviceChanged(() =>
+    console.log('AUDIO DEVICE CHANGED')
+  );
+  return () => {
+    remove();
+  };
+}, []);
 ```
 
 ### New Architecture support

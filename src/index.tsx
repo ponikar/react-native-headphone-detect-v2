@@ -26,7 +26,9 @@ export function isAudioDeviceConnected(): Promise<{
   return HeadphoneDetectV2.isAudioDeviceConnected();
 }
 
-export function addListener(callback: () => void): () => void {
+export function onAudioDeviceChanged(callback: () => void): {
+  remove: () => void;
+} {
   return eventEmitter.addListener(
     HeadphoneDetectV2.AUDIO_DEVICE_CHANGED_NOTIFICATION,
     callback

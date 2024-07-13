@@ -10,7 +10,7 @@ export default function App() {
       const response = await HeadPhone.isAudioDeviceConnected();
       console.log('RESPONSE', response);
 
-      HeadPhone.addListener((...args) => {
+      HeadPhone.onAudioDeviceChanged((...args) => {
         console.log(args, 'listening for event');
       });
     })();
