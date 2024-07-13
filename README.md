@@ -56,6 +56,8 @@ useEffect(() => {
 }, []);
 ```
 
+> This won't work for android/ios simulators.
+
 ### New Architecture support
 
 - For now, it doesn't have support for that. I shall add that in the future. Any PR regarding that would be appreciated.

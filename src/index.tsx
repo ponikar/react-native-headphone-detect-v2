@@ -19,14 +19,16 @@ const HeadphoneDetectV2 = NativeModules.HeadphoneDetectV2
 
 const eventEmitter = new NativeEventEmitter(HeadphoneDetectV2);
 
-export function isAudioDeviceConnected(): Promise<{
+type R = {
   audioJack: boolean;
   bluetooth: boolean;
-}> {
+};
+
+export function isAudioDeviceConnected(): Promise<R> {
   return HeadphoneDetectV2.isAudioDeviceConnected();
 }
 
-export function onAudioDeviceChanged(callback: () => void): {
+export function onAudioDeviceChanged(callback: (p: R) => void): {
   remove: () => void;
 } {
   return eventEmitter.addListener(
