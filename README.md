@@ -32,6 +32,14 @@ Once you install this library run the `expo prebuild` command to sync native ios
 
 - `isAudioDeviceConnected()` returns a promise to determine whether there is any external `audioJack` or `bluetooth` device connected.
 
+### Typescript
+
+You can import type `ConnectedResult` to know the output of `isAudioDeviceConnected`
+
+```javascript
+import type { ConnectedResult } from 'react-native-headphone-detection-v2';
+```
+
 ```javascript
 import { isAudioDeviceConnected } from 'react-native-headphone-detection-v2';
 
