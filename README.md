@@ -7,13 +7,13 @@
 #### npm
 
 ```shell
-npm install react-native-headphone-detection-v2
+npm install eact-native-headphone-detect-v2
 ```
 
 #### yarn
 
 ```shell
-yarn add react-native-headphone-detection-v2
+yarn add yarn add react-native-headphone-detect-v2
 ```
 
 ### iOS installation
@@ -37,11 +37,11 @@ Once you install this library run the `expo prebuild` command to sync native ios
 You can import type `ConnectedResult` to know the output of `isAudioDeviceConnected`
 
 ```javascript
-import type { ConnectedResult } from 'react-native-headphone-detection-v2';
+import type { ConnectedResult } from 'yarn add react-native-headphone-detect-v2';
 ```
 
 ```javascript
-import { isAudioDeviceConnected } from 'react-native-headphone-detection-v2';
+import { isAudioDeviceConnected } from 'yarn add react-native-headphone-detect-v2';
 
 // both audioJack and bluetooth are boolean values
 const { audioJack, bluetooth } = await isAudioDeviceConnected();
@@ -51,7 +51,7 @@ const { audioJack, bluetooth } = await isAudioDeviceConnected();
   This function returns a callback to remove that listener. Usually, you have to call it inside the cleanup function of `useEffect`
 
 ```javascript
-import { onAudioDeviceChanged } from 'react-native-headphone-detection-v2';
+import { onAudioDeviceChanged } from 'yarn add react-native-headphone-detect-v2';
 import { useEffect } from 'react';
 
 useEffect(() => {
