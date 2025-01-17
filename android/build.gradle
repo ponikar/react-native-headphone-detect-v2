@@ -48,6 +48,12 @@ android {
     sourceSets {
       main {
         manifest.srcFile "src/main/AndroidManifestNew.xml"
+        if (isNewArchitectureEnabled()) {
+          java.srcDirs += [
+            "generated/java",
+            "generated/jni"
+          ]
+        }
       }
     }
   }
@@ -57,6 +63,7 @@ android {
   defaultConfig {
     minSdkVersion getExtOrIntegerDefault("minSdkVersion")
     targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
+    buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()    
 
   }
 
@@ -89,3 +96,11 @@ dependencies {
   implementation "com.facebook.react:react-native:+"
 }
 
+
+if (isNewArchitectureEnabled()) {
+  react {
+    jsRootDir = file("../src/")
+    libraryName = "HeadphoneDetectV2"
+    codegenJavaPackageName = "com.headphonedetectv2"
+  }
+}

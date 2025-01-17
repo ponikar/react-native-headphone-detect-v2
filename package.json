@@ -76,7 +76,7 @@
     "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-native": "0.74.3",
-    "react-native-builder-bob": "^0.26.0",
+    "react-native-builder-bob": "^0.35.2",
     "release-it": "^15.0.0",
     "turbo": "^1.10.7",
     "typescript": "^5.2.2"
@@ -175,6 +175,19 @@
         }
       ]
     ]
+  },
+  "codegenConfig": {
+    "name": "RNHeadphoneDetectV2Spec",
+    "type": "modules",
+    "jsSrcsDir": "src",
+    "outputDir": {
+      "ios": "ios/generated",
+      "android": "android/generated"
+    },
+    "android": {
+      "javaPackageName": "com.headphonedetectv2"
+    },
+    "includesGeneratedCode": true
   },
   "create-react-native-library": {
     "type": "module-legacy",

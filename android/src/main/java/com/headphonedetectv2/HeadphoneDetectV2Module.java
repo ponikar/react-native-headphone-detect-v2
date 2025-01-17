@@ -1,9 +1,6 @@
 package com.headphonedetectv2;
 
-import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
-import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
@@ -28,7 +25,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 @ReactModule(name = HeadphoneDetectV2Module.NAME)
-public class HeadphoneDetectV2Module extends ReactContextBaseJavaModule implements LifecycleEventListener {
+public class HeadphoneDetectV2Module extends NativeHeadphoneDetectV2Spec {
   public static final String NAME = "HeadphoneDetectV2";
   private static final String TAG = "HeadphoneDetectV2"; // Tag for logging
   private static final String AUDIO_DEVICE_CHANGED_NOTIFICATION = "AUDIO_DEVICE_CHANGED_NOTIFICATION";
@@ -37,12 +34,6 @@ public class HeadphoneDetectV2Module extends ReactContextBaseJavaModule implemen
   public HeadphoneDetectV2Module(ReactApplicationContext reactContext) {
     super(reactContext);
     Log.d(TAG, "Module initialized");
-  }
-
-  @Override
-  @NonNull
-  public String getName() {
-    return NAME;
   }
 
   private void maybeRegisterReceiver() {
@@ -208,35 +199,32 @@ public class HeadphoneDetectV2Module extends ReactContextBaseJavaModule implemen
       .emit(eventName, params);
   }
 
-  @ReactMethod
+  @Override
   public void isAudioDeviceConnected(final Promise promise) {
     Log.d(TAG, "isAudioDeviceConnected method called");
     promise.resolve(isAudioDeviceConnected());
   }
 
+  @NonNull
+  @Override
+  public String getName() {
+    return NAME;
+  }
+
   @Override
   public void initialize() {
     Log.d(TAG, "Initializing module");
-    getReactApplicationContext().addLifecycleEventListener(this);
     maybeRegisterReceiver();
   }
 
   @Override
-  public void onHostResume() {
-    Log.d(TAG, "Host resumed");
-    maybeRegisterReceiver();
+  public void addListener(String eventName) {
+    // Required for RN built in Event Emitter Calls
   }
 
   @Override
-  public void onHostPause() {
-    Log.d(TAG, "Host paused");
-    maybeUnregisterReceiver();
-  }
-
-  @Override
-  public void onHostDestroy() {
-    Log.d(TAG, "Host destroyed");
-    maybeUnregisterReceiver();
+  public void removeListeners(double count) {
+    // Required for RN built in Event Emitter Calls
   }
 
   // Helper method to convert Bluetooth states to readable strings
