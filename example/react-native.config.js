@@ -1,20 +1,21 @@
 const path = require('path');
-const pak = require('../package.json');
-const { configureProjects } = require('react-native-test-app');
+const pkg = require('../package.json');
 
 module.exports = {
-  project: configureProjects({
-    android: {
-      sourceDir: 'android',
-    },
+  project: {
     ios: {
-      sourceDir: 'ios',
       automaticPodsInstallation: true,
     },
-  }),
+  },
   dependencies: {
-    [pak.name]: {
+    [pkg.name]: {
       root: path.join(__dirname, '..'),
+      platforms: {
+        // Codegen script incorrectly fails without this
+        // So we explicitly specify the platforms with empty object
+        ios: {},
+        android: {},
+      },
     },
   },
 };

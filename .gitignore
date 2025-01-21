@@ -59,7 +59,8 @@ buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
-
+android/generated
+ios/generated
 # Yarn
 .yarn/*
 !.yarn/patches

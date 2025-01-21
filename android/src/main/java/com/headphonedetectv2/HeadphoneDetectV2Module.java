@@ -25,7 +25,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 @ReactModule(name = HeadphoneDetectV2Module.NAME)
-public class HeadphoneDetectV2Module extends NativeHeadphoneDetectV2Spec {
+public class HeadphoneDetectV2Module extends NativeHeadphoneDetectSpec {
   public static final String NAME = "HeadphoneDetectV2";
   private static final String TAG = "HeadphoneDetectV2"; // Tag for logging
   private static final String AUDIO_DEVICE_CHANGED_NOTIFICATION = "AUDIO_DEVICE_CHANGED_NOTIFICATION";
