@@ -1,7 +1,7 @@
 {
   "name": "react-native-headphone-detect-v2",
-  "version": "0.1.0",
-  "description": "lol",
+  "version": "0.2.6-beta-1",
+  "description": "This library is ported from the legacy react-native-headphone-detection library with support for the latest version of Android/iOS SDK, and Typescript intellisense.",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
@@ -48,7 +48,9 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "audio",
+    "headphone"
   ],
   "repository": {
     "type": "git",
