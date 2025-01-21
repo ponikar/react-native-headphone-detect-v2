@@ -1,9 +1,21 @@
-import { Text, View, StyleSheet } from 'react-native';
-import { multiply } from 'react-native-headphone-detect-v2';
-
-const result = multiply(3, 7);
-
+import { useState, useEffect } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import * as HeadPhone from 'react-native-headphone-detect-v2';
 export default function App() {
+  const [result, setResult] = useState<string | undefined>();
+
+  useEffect(() => {
+    (async () => {
+      const response = await HeadPhone.isAudioDeviceConnected();
+
+      setResult(JSON.stringify(response));
+
+      HeadPhone.onAudioDeviceChanged((data) => {
+        setResult(JSON.stringify(data));
+      });
+    })();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text>Result: {result}</Text>
@@ -16,5 +28,10 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  box: {
+    width: 60,
+    height: 60,
+    marginVertical: 20,
   },
 });
