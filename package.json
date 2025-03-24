@@ -182,7 +182,7 @@
     "jsSrcsDir": "src",
     "outputDir": {
       "ios": "ios/generated",
-      "android": "android/build/generated/source/codegen"
+      "android": "android/generated"
     },
     "android": {
       "javaPackageName": "com.headphonedetectv2"
